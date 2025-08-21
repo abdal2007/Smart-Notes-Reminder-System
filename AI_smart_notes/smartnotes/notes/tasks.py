@@ -8,12 +8,15 @@ def send_due_reminders():
     now = timezone.now()
     due = Reminder.objects.filter(sent=False, run_at__lte=now)
     for r in due:
-        send_mail(
-            subject=f"Reminder: {r.note.task}",
-            message=f"Hi! It's time: {r.note.raw_text}",
-            from_email=None,
-            recipient_list=[r.note.user.email],  
-        )
-        r.sent = True
-        r.save()
+        user_email = r.note.user.email 
+        if user_email:
+            send_mail(
+                subject=f"Reminder: {r.note.task}",
+                message=f"Hi! It's time: {r.note.raw_text}",
+                from_email=None,
+                recipient_list=[user_email],  
+            )
+            r.sent = True
+            r.save()
     return f"Sent {due.count()} reminders"
+
