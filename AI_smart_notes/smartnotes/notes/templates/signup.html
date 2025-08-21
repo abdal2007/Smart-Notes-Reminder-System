@@ -14,9 +14,19 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        {% if form.errors %}
+        <ul>
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <li style="color:red;">{{ error }}</li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
         <button type="submit">Register</button>
     </form>
     <p>Already have account? <a href="{% url 'login' %}">Login</a></p>
 </body>
+
 
 </html>
