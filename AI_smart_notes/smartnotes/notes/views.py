@@ -7,10 +7,11 @@ from .models import Note, Reminder
 from .serializers import NoteSerializer, ReminderSerializer
 from .services import parse_note_ai
 from django.contrib.auth.models import User
+from .forms import SimpleSignupForm
 
 # Create your views here.
 class SignupView(CreateView):
-    form_class = UserCreationForm
+    form_class = SimpleSignupForm
     template_name = "signup.html"
     success_url = reverse_lazy("login")
 
@@ -51,6 +52,7 @@ class ReminderListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Reminder.objects.filter(note__user=self.request.user).order_by("run_at")
+
 
 
 
