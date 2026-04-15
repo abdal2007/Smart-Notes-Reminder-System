@@ -1,5 +1,7 @@
 # Smart Notes & Reminder System  
 
+
+
 ##  Overview  
 A Django based Smart notes **AI powered reminder app** which converts language text to structured reminder.
 
