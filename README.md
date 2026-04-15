@@ -1,4 +1,11 @@
+
 # Smart Notes & Reminder System  
+
+## 🎥 Demo Videos
+
+
+https://github.com/user-attachments/assets/9035237b-f97e-41e0-bc75-62babcbc970b
+
 
 
 
